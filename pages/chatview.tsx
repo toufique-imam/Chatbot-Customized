@@ -4,6 +4,7 @@ import { Message } from '@/types/chat';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import LoadingDots from '@/components/ui/LoadingDots';
+import { franc } from 'franc-min';
 
 
 export default function ChatView() {
@@ -52,6 +53,8 @@ export default function ChatView() {
         }
 
         const question = query.trim();
+        const questionLanguage = franc(question);
+    
 
         setMessageState((state) => ({
             ...state,
@@ -75,6 +78,7 @@ export default function ChatView() {
                 },
                 body: JSON.stringify({
                     question: question,
+                    language: questionLanguage,
                     history: getHistoryAsString(),
                 }),
             });

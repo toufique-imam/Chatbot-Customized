@@ -9,9 +9,15 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const { question, history } = req.body;
+  const { question, language, history } = req.body;
 
   console.log('question', question);
+  console.log('questionLanguage', language);
+
+  var questionLanguage = language;
+  if(!questionLanguage) {
+    questionLanguage = 'eng';
+  }
 
   //only accept post requests
   if (req.method !== 'POST') {
@@ -24,6 +30,10 @@ export default async function handler(
   }
   // OpenAI recommends replacing newlines with spaces for best results
   const sanitizedQuestion = question.trim().replaceAll('\n', ' ');
+
+  var finalQuestion = "Question language is \"" + questionLanguage +  "\" in ISO 639-2 format. Answer the question in the same language.\n Question: " + sanitizedQuestion + "\n";
+
+  console.log('finalQuestion', finalQuestion);
 
   try {
     const index = pinecone.Index(PINECONE_INDEX_NAME);
@@ -41,10 +51,12 @@ export default async function handler(
     //create chain
     const chain = makeChain(vectorStore);
     //Ask a question using chat history
-    const response = await chain.call({
-      question: sanitizedQuestion,
+    const chainValues = {
+      question: finalQuestion,
+      detected_language: questionLanguage || "eng",
       chat_history: history || [],
-    });
+    };
+    const response = await chain.call(chainValues)
 
     console.log('response', response);
     res.status(200).json(response);
