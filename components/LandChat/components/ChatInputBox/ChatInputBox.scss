@@ -1,0 +1,70 @@
+.chat-input-box {
+  position: relative;
+  width: 100%;
+  border: 1px solid #53c2de80;
+  border-radius: 10px 10px 0 0;
+  height: 7rem;
+  .flex-row {
+    display: flex;
+    padding: 0.25rem;
+  }
+  .color {
+    color: #53c2de80;
+  }
+  .header-input-box {
+    width: 100%;
+    border-bottom: 2px solid #53c2de80;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+    gap: 0.05rem;
+
+    .name-first-terminal {
+      border: 1px solid #53c2de80;
+      border-bottom: none;
+      border-radius: 10px 10px 0 0;
+      padding: 0.25rem;
+      font-size: 10px;
+      background-color: #53c2de80;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.25rem;
+      .promp-wr {
+        width: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .chat-input {
+    width: 100%;
+    // background-color: #53c2de80;
+    background-color: #53c2de00;
+
+    // padding: 0.8rem 1.4rem;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    outline: none;
+    color: white;
+    // border: 1px solid #53c2de80;
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+      rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 0px 15px 0px;
+    border: none;
+  }
+
+  .chat-submit {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translate(0%, -50%);
+    color: white;
+  }
+}

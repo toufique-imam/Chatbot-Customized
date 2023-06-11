@@ -1,0 +1,43 @@
+//Fonts
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap");
+@import url("https://fonts.cdnfonts.com/css/cocogoose");
+@import url("https://fonts.cdnfonts.com/css/cocogoose-pro");
+@import url("https://fonts.googleapis.com/css2?family=Alkatra&display=swap");
+
+// Components
+@import "./../scripts/components/components.scss";
+
+// Pages
+@import "./../scripts/pages/pages.scss";
+
+body {
+  background-color: black;
+  box-sizing: border-box;
+}
+header {
+  height: 4.5rem;
+  position: relative;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  scroll-behavior: smooth;
+}
+
+ul {
+  list-style-type: none;
+}

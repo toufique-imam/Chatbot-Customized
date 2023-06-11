@@ -1,0 +1,61 @@
+body {
+  background: black;
+}
+canvas {
+  display: block;
+}
+.loading-page {
+  height: 100vh;
+  width: 100%;
+  background: radial-gradient(#000000, #272627);
+  // background-image: url(../../images/preload.jpg);
+  display: fixed;
+  background-size: contain;
+  z-index: 1000;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  filter: brightness(0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: leaving 5s linear;
+  color: red;
+  @keyframes leaving {
+    0% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-300rem);
+    }
+  }
+  .preload-gif {
+    width: 25%;
+    z-index: 1200;
+  }
+  .wrp {
+    max-width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: rotating 15s linear;
+    @keyframes rotating {
+      0% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(360deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}

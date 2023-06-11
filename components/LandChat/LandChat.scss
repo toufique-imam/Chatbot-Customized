@@ -1,0 +1,174 @@
+// Components imports
+
+@import "./components/ChatInputBox/ChatInputBox.scss";
+@import "./components/ChatMessage/ChatMessage.scss";
+
+// ----
+
+.ai-chat-box {
+  // display: flex;
+  // flex-direction: column;
+  // align-items: stretch;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 2rem 0rem 0;
+  overflow: scroll;
+  width: 600px;
+  gap: 1rem;
+  @media screen and (max-width: 630px) {
+    width: 100%;
+  }
+  h2 {
+    color: var(--normal-text-color);
+  }
+
+  .messages-box {
+    color: var(--text-chat);
+    flex: 1;
+    // overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+  }
+
+  .chat-message-wrapper {
+  }
+}
+.line4 {
+  color: #fff;
+  -webkit-animation: type 0.5s 10.75s steps(20, end) forwards;
+  -moz-animation: type 0.5s 10.75s steps(20, end) forwards;
+  -o-animation: type 0.5s 10.75s steps(20, end) forwards;
+  animation: type 0.5s 10.75s steps(20, end) forwards;
+}
+.rotate-v {
+  transform: rotateY(90deg);
+}
+.cursor4 {
+  -webkit-animation: blink 1s 11.5s infinite;
+  -moz-animation: blink 1s infinite;
+  -o-animation: blink 1s infinite;
+  animation: blink 1s infinite;
+}
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-o-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes type {
+  to {
+    width: 17em;
+  }
+}
+
+@-moz-keyframes type {
+  to {
+    width: 17em;
+  }
+}
+
+@-o-keyframes type {
+  to {
+    width: 17em;
+  }
+}
+
+@keyframes type {
+  to {
+    width: 17em;
+  }
+}
+
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 0.3rem;
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .spinner {
+    display: inline;
+    color: var(--primary-color);
+    animation: spin 1s linear infinite;
+
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}

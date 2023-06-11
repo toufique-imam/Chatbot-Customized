@@ -1,0 +1,23 @@
+.chat-input-box {
+  position: relative;
+  width: 50%;
+  .chat-input {
+    width: 100%;
+    background-color: #53c2de80;
+    padding: 0.8rem 1.4rem;
+    border-radius: 0.5rem;
+    outline: none;
+    color: white;
+    border: 1px solid #53c2de80;
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+      rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 0px 15px 0px;
+  }
+
+  .chat-submit {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translate(0%, -50%);
+    color: white;
+  }
+}
