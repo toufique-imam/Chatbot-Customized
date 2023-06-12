@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ChatInputBox from "./components/ChatInputBox/ChatInputBox";
 import ChatMessage, { ChatMessageModel } from "./components/ChatMessage";
 import { queryBot, parseBotResponse } from "./components/ChatBotUtils"
-import { set } from "lodash";
+
 const LandChat = () => {
   const [currentMessage, setCurrentMessage] = useState<string>("");
   const [messages, setMessages] = useState<Array<ChatMessageModel>>([]);
@@ -15,7 +15,7 @@ const LandChat = () => {
       setMessages((oldMessages) => {
         let newMsg: ChatMessageModel = {
           content: newMessage,
-          profileImage: "/build/images/user.png",
+          profileImage: "/user.png",
         };
 
         return [...oldMessages, newMsg];

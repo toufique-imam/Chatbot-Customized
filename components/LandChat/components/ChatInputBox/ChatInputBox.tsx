@@ -23,7 +23,7 @@ const ChatInputBox = (props: ChatInputBoxProps) => {
           <div className="name-first-terminal">
             <div className="promp-wr">
               <img
-                src="/build/images/commandPrompt/commandWnd.png"
+                src="/commandPrompt/commandWnd.png"
                 alt="commandLine"
               />
             </div>

@@ -5,10 +5,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Alkatra&display=swap");
 
 // Components
-@import "./../scripts/components/components.scss";
+@import "@/components/components.scss";
 
 // Pages
-@import "./../scripts/pages/pages.scss";
+@import "@/pages/pages.scss";
 
 body {
   background-color: black;

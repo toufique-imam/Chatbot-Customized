@@ -3,7 +3,6 @@ import { useNavigate } from "react-router";
 import LandChat from "../LandChat";
 
 const ChatPage = () => {
-  const navigate = useNavigate();
   const loader = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
@@ -25,7 +24,7 @@ const ChatPage = () => {
           className="img-wrp"
 
         >
-          <img src="/build/images/Logo-AI.png" alt="Crypto Pad X AI Chat" />
+          <img src="/Logo-AI.png" alt="Crypto Pad X AI Chat" />
         </div>
         <div className="display">
           <LandChat></LandChat>

@@ -15,7 +15,7 @@ const LoadingPage = () => {
   return (
     <div className="loading-page" ref={loader}>
       <div className="wrp">
-        <img src="/build/images/Logo-AI.png" alt="Loading" />
+        <img src="/Logo-AI.png" alt="Loading" />
       </div>
     </div>
   );
