@@ -7,7 +7,6 @@ const CONDENSE_PROMPT = `Given the following conversation and a follow up questi
 Chat History:
 {chat_history}
 
-DETECT THE LANGUAGE OF THE FOLLOWING QUESTION AND ANSWER IN THE SAME LANGUAGE.
 Follow Up Input: {question}
 Standalone question:`;
 
@@ -15,10 +14,11 @@ const QA_PROMPT = `You are a helpful AI assistant Of the Cryptpad X project. Use
 If you don't know the answer, just say you don't know. DO NOT try to make up an answer.
 If the question is not related to the context, dont try to put the context into the answer. Answer the question as if you don't have the context. Use the previous conversations to get the answer.
 Sometimes the question is not a question but a statement. In that case, reply with a statement.
-{context}
 
-DETECT THE LANGUAGE OF THE FOLLOWING QUESTION AND ANSWER IN THE SAME LANGUAGE.
-Question: {question}
+Chat History:
+{chat_history}
+
+{question}
 Helpful answer in text:`;
 
 
@@ -29,7 +29,6 @@ export const makeChain = (vectorstore: PineconeStore) => {
     vectorstore.asRetriever(),
     {
       qaTemplate: QA_PROMPT,
-      questionGeneratorTemplate: CONDENSE_PROMPT,
       returnSourceDocuments: false
     },
   );

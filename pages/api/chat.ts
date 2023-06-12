@@ -4,19 +4,29 @@ import { PineconeStore } from 'langchain/vectorstores/pinecone';
 import { makeChain } from '@/utils/makechain';
 import { pinecone } from '@/utils/pinecone-client';
 import { PINECONE_INDEX_NAME, PINECONE_NAME_SPACE } from '@/config/pinecone';
+import lande from "lande";
+import { iso6393 } from 'iso-639-3'
+
+
+function convertLanguageCodeToName(code: String) {
+  const language = iso6393.find((lang) => lang.iso6393 === code);
+  return language ? language.name : "English";
+}
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const { question, language, history } = req.body;
+  const { question, history } = req.body;
 
+  const prediction = lande(question);
+  console.log('prediction', prediction[0]);
+  var language = convertLanguageCodeToName(prediction[0][0]);
   console.log('question', question);
   console.log('questionLanguage', language);
 
-  var questionLanguage = language;
-  if(!questionLanguage) {
-    questionLanguage = 'eng';
+  if(!language) {
+    language = 'English';
   }
 
   //only accept post requests
@@ -31,8 +41,10 @@ export default async function handler(
   // OpenAI recommends replacing newlines with spaces for best results
   const sanitizedQuestion = question.trim().replaceAll('\n', ' ');
 
-  var finalQuestion = "Question language is \"" + questionLanguage +  "\" in ISO 639-2 format. Answer the question in the same language.\n Question: " + sanitizedQuestion + "\n";
-
+  var finalQuestion = "Answer the following question in "+ language +" language. QUESTION: " + sanitizedQuestion;
+  if(sanitizedQuestion.length < 10) {
+    finalQuestion = "DETECT THE LANGUAGE OF THE QUESTION AND ANSWER IN THE SAME LANGUAGE.\n QUESTION: " + sanitizedQuestion + "\n";
+  }
   console.log('finalQuestion', finalQuestion);
 
   try {
@@ -53,7 +65,7 @@ export default async function handler(
     //Ask a question using chat history
     const chainValues = {
       question: finalQuestion,
-      detected_language: questionLanguage || "eng",
+      detected_language: language,
       chat_history: history || [],
     };
     const response = await chain.call(chainValues)

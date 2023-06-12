@@ -3,8 +3,8 @@ import styles from '@/styles/Home.module.css';
 import { Message } from '@/types/chat';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
-import LoadingDots from '@/components/ui/LoadingDots';
-import { franc } from 'franc-min';
+// import LoadingDots from '@/components/ui/LoadingDots';
+import { franc } from 'franc';
 
 
 export default function ChatView() {
@@ -33,7 +33,7 @@ export default function ChatView() {
         textAreaRef.current?.focus();
     }, []);
 
-    function getHistoryAsString(){
+    function getHistoryAsString() {
         let historyString = '';
         history.forEach((item) => {
             historyString += `${item[0]} ${item[1]}\n`;
@@ -54,7 +54,7 @@ export default function ChatView() {
 
         const question = query.trim();
         const questionLanguage = franc(question);
-    
+
 
         setMessageState((state) => ({
             ...state,
@@ -204,7 +204,7 @@ export default function ChatView() {
                             >
                                 {loading ? (
                                     <div className={styles.loadingwheel}>
-                                        <LoadingDots color="#000" />
+                                        {/* <LoadingDots color="#000" /> */}
                                     </div>
                                 ) : (
                                     // Send icon SVG in input field

@@ -29,7 +29,7 @@ const ChatMessage = (props: ChatMessageProps) => {
         <Typewriter
           textToType={text}
           textSpeed={50}
-          delay={500}
+          delay={50}
           noChevron={false}
           chevronColor={"#33a0be"}
         ></Typewriter>

@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ChatInputBox from "./components/ChatInputBox/ChatInputBox";
 import ChatMessage, { ChatMessageModel } from "./components/ChatMessage";
-import { queryBot, parseBotResponse } from "./components/ChatBotUtils"
+import { queryBot, parseBotResponse } from "@/utils/ChatBotUtils"
 
 const LandChat = () => {
   const [currentMessage, setCurrentMessage] = useState<string>("");
@@ -9,9 +9,11 @@ const LandChat = () => {
   const [histories, setHistories] = useState<string>("");
   const [isWaitingResponse, setIsWaitingResponse] = useState<boolean>(false);
 
-  async function handleQuery(newMessage: string) {
+  async function handleQuery(query: string) {
+    const newMessage = query.trim();
     console.log("Got message:", newMessage);
     if (newMessage && newMessage.length > 0) {
+      setIsWaitingResponse(true);
       setMessages((oldMessages) => {
         let newMsg: ChatMessageModel = {
           content: newMessage,
@@ -21,7 +23,6 @@ const LandChat = () => {
         return [...oldMessages, newMsg];
       });
       setCurrentMessage("");
-      setIsWaitingResponse(true);
       const response = await queryBot(newMessage, histories);
       const responseMessage = await parseBotResponse(response);
       console.log("ok");
@@ -33,7 +34,7 @@ const LandChat = () => {
         console.log("check 1", oldMessages.length);
         let newMsg: ChatMessageModel = {
           content: responseMessage,
-          profileImage: "/build/images/logo.svg",
+          profileImage: "/logo.svg",
         };
         return [...oldMessages, newMsg];
       });
@@ -46,23 +47,17 @@ const LandChat = () => {
         <ChatMessage
           message={{
             content: "Is anyone there?",
-            profileImage: "/build/images/logo.svg",
+            profileImage: "/logo.svg",
           }}
         />
         {messages.map((message) => {
-          return <ChatMessage key={message.content} message={message} />;
+            return <ChatMessage key={message.content} message={message} />;
         })}
         {isWaitingResponse && (
           <ChatMessage
             message={{
-              content: (
-                <p className="line4">
-                  {" "}
-                  <span className="rotate-v">C:\</span>
-                  <span className="cursor4">_</span>
-                </p>
-              ),
-              profileImage: "/build/images/logo.svg",
+              content: "typing...",
+              profileImage: "/logo.svg",
             }}
           />
         )}
