@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router";
+import React, { useEffect, useRef } from "react";
 import LandChat from "../LandChat";
+import Image from "next/image";
 
 const ChatPage = () => {
   const loader = useRef<HTMLImageElement>(null);
@@ -24,7 +24,7 @@ const ChatPage = () => {
           className="img-wrp"
 
         >
-          <img src="/Logo-AI.png" alt="Crypto Pad X AI Chat" />
+          <Image src="/Logo-AI.png" alt="Crypto Pad X AI Chat" />
         </div>
         <div className="display">
           <LandChat></LandChat>

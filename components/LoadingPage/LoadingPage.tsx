@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 
 const LoadingPage = () => {
@@ -15,7 +16,7 @@ const LoadingPage = () => {
   return (
     <div className="loading-page" ref={loader}>
       <div className="wrp">
-        <img src="/Logo-AI.png" alt="Loading" />
+        <Image src="/Logo-AI.png" alt="Loading" />
       </div>
     </div>
   );

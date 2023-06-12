@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ChatInputBoxProps } from "./ChatInputBox.types";
+import Image from "next/image";
 
 const ChatInputBox = (props: ChatInputBoxProps) => {
   const [inputText, setInputText] = useState("");
@@ -22,7 +23,7 @@ const ChatInputBox = (props: ChatInputBoxProps) => {
         <div className="header-input-box">
           <div className="name-first-terminal">
             <div className="promp-wr">
-              <img
+              <Image
                 src="/commandPrompt/commandWnd.png"
                 alt="commandLine"
               />
