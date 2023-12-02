@@ -1,4 +1,8 @@
-# ChatbotXPolygon
+# Chatbot Minting dapp on polygon
+- chat with openai chatbot
+- mint your result as a NFT
+- nextjs
+  
 ## Development
 
 1. Clone the repo or download the ZIP
